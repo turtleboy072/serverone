@@ -44,22 +44,13 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
         pingTimer?.setEventHandler { ws.send(Data()) }
         pingTimer?.resume()
         
-        if browserClient == nil {
-            browserClient = ws
-        } else if phoneClient == nil && browserClient != nil  {
-            phoneClient = ws
-            phoneClient?.send("ur connected now 2nd item")
-            phoneClient?.send("sendImage")
-        } else {
-            browserClient?.close()
-            phoneClient?.send("closing both")
-            phoneClient?.close()
-            browserClient = nil
-            phoneClient = nil
-        }
         ws.onText { ws, text in
-            print("ws received: \(text)")
-            ws.send("echo - \(text)")
+            if text == "im from website" {
+                browserClient = ws
+            } else if text == "im from device" {
+                phoneClient = ws
+                phoneClient?.send("sendImage")
+            }
         }
         ws.onBinary({ (ws, data) in
             browserClient?.send(data)

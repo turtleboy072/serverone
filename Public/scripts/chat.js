@@ -3,7 +3,8 @@ function Chat(host) {
     var myImage = document.getElementById('image');
     chat.ws = new WebSocket('wss://' + host);
     chat.ws.onopen = function() {
-         console.log("on open");
+        console.log("on open");
+        chat.ws.send("im from website");
     };
     chat.ws.onclose = function() {
         console.log("on close");
