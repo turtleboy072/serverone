@@ -51,8 +51,9 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
             phoneClient?.send("ur connected now 2nd item")
             phoneClient?.send("sendImage")
         } else {
-            phoneClient?.close()
             browserClient?.close()
+            phoneClient?.send("closing both")
+            phoneClient?.close()
             browserClient = nil
             phoneClient = nil
         }
@@ -63,10 +64,6 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
         ws.onBinary({ (ws, data) in
             browserClient?.send(data)
             phoneClient?.send("sendImage")
-        })
-        ws.onCloseCode({ (ws) in
-            browserClient = nil
-            phoneClient = nil
         })
     }
     services.register(websockets, as: WebSocketServer.self)
