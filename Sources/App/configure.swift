@@ -46,9 +46,12 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
         
         if browserClient == nil {
             browserClient = ws
-        } else if phoneClient == nil  {
+        } else if phoneClient == nil && browserClient != nil  {
             phoneClient = ws
+            phoneClient?.send("ur connected now 2nd item")
             phoneClient?.send("sendImage")
+        } else {
+            phoneClient?.send("too many conn")
         }
         ws.onText { ws, text in
             print("ws received: \(text)")
