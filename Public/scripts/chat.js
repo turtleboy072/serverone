@@ -9,7 +9,7 @@ function Chat(host) {
     };
     chat.ws.onclose = function() {
         console.log("on close");
-        chat.ws = new WebSocket('wss://' + url);
+       Chat(url);
     };
     chat.ws.onerror = function() {
         console.log("on error");
