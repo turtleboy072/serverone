@@ -8,6 +8,7 @@ function Chat(host) {
     };
     chat.ws.onclose = function() {
         console.log("on close");
+        chat.ws = new WebSocket('wss://' + host);
     };
     chat.ws.onerror = function() {
         console.log("on error");
