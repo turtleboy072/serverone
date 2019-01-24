@@ -1,5 +1,6 @@
 function Chat(host) {
     var chat = this;
+    var url = host
     var myImage = document.getElementById('image');
     chat.ws = new WebSocket('wss://' + host);
     chat.ws.onopen = function() {
@@ -8,7 +9,7 @@ function Chat(host) {
     };
     chat.ws.onclose = function() {
         console.log("on close");
-        chat.ws = new WebSocket('wss://' + host);
+        chat.ws = new WebSocket('wss://' + url);
     };
     chat.ws.onerror = function() {
         console.log("on error");
