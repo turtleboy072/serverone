@@ -2,7 +2,7 @@
 <html >
 <head>
 <meta charset="UTF-8">
-<title>Vapor Chat</title>
+<title>Deivce View</title>
 
 <link rel="stylesheet" href="styles/normalize.css">
 <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Open+Sans'>
@@ -11,8 +11,8 @@
 </head>
 
 <body>
-<h1>Vapor Chat</h1>
-<img id="image" src="/images/pic_trulli.jpg">
+<h1>Deivce View<</h1>
+<img id="image">
 <h2>Realtime WebSocket chat powered by Vapor 🚀</h2>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src="scripts/chat.js"></script>
